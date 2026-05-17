@@ -1,27 +1,42 @@
 # Linux Custom Shell
 
-A custom Linux command-line interpreter (Shell) designed and implemented in C as part of the Operating Systems academic coursework. This project demonstrates core concepts of OS architecture, process lifecycle management, and system-level programming.
+A custom Unix-like command-line interpreter (Shell) designed and implemented in C as part of an Operating Systems academic project. This project demonstrates core concepts of OS architecture, process lifecycle management, and low-level systems programming in Linux environments.
 
 ## Features
-* **Command Execution:** Executes standard Linux system commands in both foreground and background modes.
-* **Process Management:** Utilizes low-level system calls for concurrent process creation and management.
-* **Signal Handling:** Properly manages and handles system signals (such as `Ctrl+C`).
-* **Resource Cleanup:** Features proactive memory management and zombie process prevention.
+
+- Command execution in both foreground and background modes
+- Process creation and management using low-level POSIX system calls
+- Background process execution using '&'
+- Signal handling using SIGINT (Ctrl+C)
+- Zombie process prevention and proper child process cleanup
+- Dynamic memory management and command input parsing
+- Robust error handling and process synchronization
 
 ## System Calls & Concepts Used
-* `fork()`: To clone the calling process and create child processes.
-* `execvp()`: To replace the child process image with the intended command executable.
-* `waitpid()`: To synchronize process execution and collect child process termination status.
-* **Pointers & Dynamic Memory:** Rigorous memory management and input parsing in C.
+
+- `fork()` — Creates child processes
+- `execvp()` — Replaces process image with executable commands
+- `waitpid()` — Synchronizes process execution and handles child termination
+- `signal()` / `sigaction()` — Signal handling and process control
+- Pointers & Dynamic Memory — Manual memory management in C
+- Process Management — Foreground/background execution and lifecycle handling
+
+## Technologies
+
+- C
+- Linux
+- GCC
+- GDB
+- POSIX System Calls
 
 ## Getting Started
 
 ### Prerequisites
-* A Linux environment (Ubuntu, Lubuntu, Debian, etc.)
-* GCC Compiler
+
+- Linux environment (Ubuntu, Lubuntu, Debian, etc.)
+- GCC Compiler
 
 ### Compilation and Running
-To compile and run the shell, execute the following commands in your terminal:
 
 ```bash
 # Compile the shell source code
