@@ -1,46 +1,42 @@
 # Linux Custom Shell
 
-A custom Unix-like command-line interpreter (Shell) designed and implemented in C as part of an Operating Systems academic project. This project demonstrates core concepts of OS architecture, process lifecycle management, and low-level systems programming in Linux environments.
+A custom Unix-like command-line interpreter (Shell) implemented in C. This project demonstrates core concepts of operating systems, process creation, manual `PATH` resolution, and dynamic memory management in Linux.
 
 ## Features
 
-- Command execution in both foreground and background modes
-- Process creation and management using low-level POSIX system calls
-- Background process execution using '&'
-- Signal handling using SIGINT (Ctrl+C)
-- Zombie process prevention and proper child process cleanup
-- Dynamic memory management and command input parsing
-- Robust error handling and process synchronization
+- **Interactive Shell Prompt:** Custom CLI interface (`Idan'sShell`).
+- **Command Execution:** Supports both absolute/relative paths (e.g., `/bin/ls`, `./script`) and standard system commands (e.g., `ls`, `pwd`).
+- **Manual PATH Parsing:** Parses the system's `PATH` environment variable to dynamically locate executables.
+- **Process Management:** Creates isolated child processes for command execution.
+- **Dynamic Memory Control:** Safe allocation (`calloc`) and deallocation to prevent memory corruption.
 
 ## System Calls & Concepts Used
 
-- `fork()` — Creates child processes
-- `execvp()` — Replaces process image with executable commands
-- `waitpid()` — Synchronizes process execution and handles child termination
-- `signal()` / `sigaction()` — Signal handling and process control
-- Pointers & Dynamic Memory — Manual memory management in C
-- Process Management — Foreground/background execution and lifecycle handling
+- `fork()` — Spawns child processes.
+- `execv()` — Replaces process image with the target command executable.
+- `wait()` — Synchronizes parent process with child termination.
+- `getenv()` & `strtok()` — Environment variable retrieval and tokenization.
+- Dynamic Memory — Manual memory allocation and memory cleanup in C.
 
 ## Technologies
 
 - C
 - Linux
-- GCC
-- GDB
+- GCC / GDB
 - POSIX System Calls
 
 ## Getting Started
 
 ### Prerequisites
 
-- Linux environment (Ubuntu, Lubuntu, Debian, etc.)
+- Linux / POSIX environment
 - GCC Compiler
 
 ### Compilation and Running
 
 ```bash
-# Compile the shell source code
-gcc -Wall shell.c -o custom_shell
+# Compile the shell
+gcc -Wall main.c -o custom_shell
 
 # Run the shell
 ./custom_shell
